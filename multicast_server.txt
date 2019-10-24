@@ -1,0 +1,36 @@
+package ritwik;
+
+import java.io.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+public class multicast_servere
+{
+		public static void main(String[] args)
+		{
+			try
+			{
+			DatagramSocket ms=new DatagramSocket();
+			int i=0;
+			while(i<1000)
+				{
+			System.out.print("->");
+			BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+			String s=bf.readLine();
+			s="Ankit : "+s;
+			byte[] ba=s.getBytes();
+			String maddr="224.224.0.0";
+			InetAddress ip=InetAddress.getByName(maddr);                                                                                
+			DatagramPacket ds=new DatagramPacket(ba,ba.length,ip,4998);
+			ms.send(ds);
+			i++;
+				}
+			ms.close();
+	   }
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+			
+		}
+		}
