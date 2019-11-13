@@ -1,11 +1,7 @@
 package socketp1;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.io.*;
+import java.net.*;
 
 public class s_f 
 {
@@ -20,17 +16,15 @@ public class s_f
 	{
 		try
 		{
-		FileInputStream f=new FileInputStream("/home/ankit/Downloads/study/IMG_20140915_014043.jpg");
-		byte[] ba=new byte[1024];
-		  BufferedInputStream bf=new BufferedInputStream(f);
-		  BufferedOutputStream bo=new BufferedOutputStream(s.getOutputStream());
-		  int c=bf.read(ba,0,ba.length);
-		  while(c!=-1)
+		FileInputStream f=new FileInputStream("/home/ankit/Desktop/extras/ph.jpg");
+		//DataInputStream bf=new DataInputStream(f);
+		DataOutputStream bo=new DataOutputStream(s.getOutputStream());
+		  int c;
+		  while((c=f.read())!=-1)
 		  {
-			  bo.write(ba,0,c);
-			  c=bf.read(ba,0,ba.length);
-	}
-}
+			  bo.write(c);
+		  }
+		}
 		catch(Exception e)
 		{
 			System.out.println(e);
